@@ -5,6 +5,7 @@ import MarketplacePage from "./pages/MarketplacePage";
 // import useAuthValidation from './auth/authValidation';
 import "./App.css";
 import CartPage from "./pages/CartPage";
+import Checkout from "./pages/CheckoutPage";
 // import { useEffect } from 'react';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/marketplace" element={<MarketplacePage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
