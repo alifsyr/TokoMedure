@@ -1,15 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import LoginPage from './pages/LoginPage'
+import NotFoundPage from './pages/NotFound';
+import MarketplacePage from './pages/MarketplacePage';
+import useAuthValidation from './auth/authValidation';
 import './App.css'
-import MarketplacePage from './pages/MarketplacePage'
+import { useEffect } from 'react';
 
 function App() {
+  const { isLogin } = useAuthValidation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLogin) {
+      navigate('/marketplace');
+    } else {
+      navigate('/');
+    }
+  }, [isLogin, navigate]);
 
   return (
-    <>
-    <MarketplacePage />
-    </>
+    <div>
+      <Routes>
+        <Route path='/' element={<LoginPage />} />
+        <Route path="/marketplace" element={<MarketplacePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </div>
   )
 }
 
