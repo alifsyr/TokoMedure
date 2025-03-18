@@ -1,6 +1,18 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Form from "../components/Form";
+import useAuthValidation from '../auth/authValidation';
 
 function LoginPage() {
+    const navigate = useNavigate();
+    const { isLogin } = useAuthValidation();
+
+    useEffect(() => {
+        if (isLogin) {
+            navigate('/marketplace');
+        }
+    }, [isLogin, navigate]);
+
     return (
         <div>
             <div className="logo-container">
@@ -17,4 +29,4 @@ function LoginPage() {
     )
 }
 
-export default LoginPage
+export default LoginPage;

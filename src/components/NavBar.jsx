@@ -24,7 +24,7 @@ function NavBar() {
                     <Link to="/cart" className="navbar-link">Cart</Link>
                 </li>
             </ul>
-            <Link to="/" onClick={handleLogout} className="navbar-link logout-link">Logout</Link>
+            <Link onClick={handleLogout} className="navbar-link logout-link">Logout</Link>
         </nav>
     );
 }
