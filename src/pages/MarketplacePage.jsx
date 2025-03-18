@@ -1,12 +1,13 @@
 import ProductList from "../components/productList";
-import CartPage from "./CartPage";
+import NavBar from "../components/NavBar";
 
 function MarketplacePage() {
-    return (
-      <div>
-        <h1>Marketplace</h1>
-        <ProductList />
-      </div>
-    );
+    return(
+        <div>
+            <NavBar />
+            <h1>Marketplace</h1>
+            <ProductList />
+        </div>
+    )
 }
 export default MarketplacePage;
