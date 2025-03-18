@@ -1,13 +1,23 @@
-import { Link, Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFound";
 import MarketplacePage from "./pages/MarketplacePage";
-// import useAuthValidation from './auth/authValidation';
+import useAuthValidation from "./auth/authValidation";
 import "./App.css";
-import CartPage from "./pages/CartPage";
-// import { useEffect } from 'react';
+import { useEffect } from "react";
 
 function App() {
+  const { isLogin } = useAuthValidation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLogin) {
+      navigate("/marketplace");
+    } else {
+      navigate("/");
+    }
+  }, [isLogin, navigate]);
+
   return (
     <div>
       <Routes>
