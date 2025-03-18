@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthValidation from '../auth/authValidation';
 
-function Form () {
+function Form() {
     const navigate = useNavigate();
     const [email, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -16,28 +16,29 @@ function Form () {
     const hasNumber = /[0-9]/.test(password);
     const setIsLogin = useAuthValidation((state) => state.setIsLogin);
 
-    const handleLogin = () => {
-        if (isMinLength && hasUpperCase && specialChar && hasNumber){
+    const handleLogin = (e) => {
+        e.preventDefault();
+        if (isMinLength && hasUpperCase && specialChar && hasNumber) {
             if (email === 'admin@gmail.com' && password === '*Admin123') {
                 alert('Login successful');
                 setIsLogin();
-                navigate(`/dashboard`);
+                navigate(`/marketplace`);
             } else {
-                alert ('Login Failed')
+                alert('Login Failed')
             }
-        }else {
+        } else {
             alert('Password not match with criteria');
         }
     }
 
     return (
         <div>
-            <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 0 10px #ccc' }}>
+            <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 0 10px #ccc' }}>
                 <label htmlFor="email" style={{ marginBottom: '10px' }}>Email:</label>
-                <input type="email" id="email" name="email" required style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} onChange={handleUsername}/>
+                <input type="email" id="email" name="email" required style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} onChange={handleUsername} />
                 <label htmlFor="password" style={{ marginBottom: '10px' }}>Password:</label>
-                <input type="password" id="password" name="password" required style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} onChange={handlePassword}/>
-                <input type="submit" value="Login" style={{ padding: '10px 20px', border: 'none', borderRadius: '5px', backgroundColor: '#007bff', color: 'white', cursor: 'pointer' }} onClick={handleLogin}/>
+                <input type="password" id="password" name="password" required style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} onChange={handlePassword} />
+                <input type="submit" value="Login" style={{ padding: '10px 20px', border: 'none', borderRadius: '5px', backgroundColor: '#007bff', color: 'white', cursor: 'pointer' }} />
             </form>
         </div>
     )
