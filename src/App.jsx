@@ -5,6 +5,7 @@ import MarketplacePage from "./pages/MarketplacePage";
 import useAuthValidation from "./auth/authValidation";
 import "./App.css";
 import { useEffect } from "react";
+import CartPage from "./pages/CartPage";
 
 function App() {
   const { isLogin } = useAuthValidation();
