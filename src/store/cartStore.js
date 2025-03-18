@@ -2,18 +2,14 @@ import { create } from "zustand";
 
 const useCartStore = create((set) => ({
     cart: [],
-    addToCart: (product) => set((state) => {
-        const updatedCart = [...state.cart, product];
-        console.log("Product added to cart:", product);
-        console.log("Updated cart:", updatedCart);
-        return { cart: updatedCart };
-    }),
-    removeFromCart: (productId) => set((state) => {
-        const updatedCart = state.cart.filter((product) => product.id !== productId);
-        console.log("Product removed from cart:", productId);
-        console.log("Updated cart:", updatedCart);
-        return { cart: updatedCart };
-    }),
+    addToCart: (product) => set((state) => ({
+        cart: [...state.cart, { product }], // Bungkus dalam { product }
+    })),
+    removeFromCart: (productId) =>
+        set((state) => ({
+            cart: state.cart.filter((item) => item.product.product.id !== productId),
+        })),
+
     clearCart: () => set(() => {
         console.log("Cart cleared");
         return { cart: [] };
