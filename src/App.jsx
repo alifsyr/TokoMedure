@@ -12,17 +12,15 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLogin) {
-      navigate("/marketplace");
-    } else {
+    if (!isLogin) {
       navigate("/");
-    }
+    } 
   }, [isLogin, navigate]);
 
   return (
     <div>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route path='/' element={<LoginPage />} />
         <Route path="/marketplace" element={<MarketplacePage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
