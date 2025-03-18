@@ -8,23 +8,8 @@ import CartPage from "./pages/CartPage";
 // import { useEffect } from 'react';
 
 function App() {
-  // const { isLogin } = useAuthValidation();
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (isLogin) {
-  //     navigate('/marketplace');
-  //   } else {
-  //     navigate('/');
-  //   }
-  // }, [isLogin, navigate]);
-
   return (
     <div>
-      <nav>
-        <Link to="/marketplace">Home</Link>
-        <Link to="/cart">Cart</Link>
-      </nav>
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/marketplace" element={<MarketplacePage />} />
