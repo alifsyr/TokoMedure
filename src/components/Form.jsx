@@ -36,13 +36,13 @@ function Form() {
     }
 
     return (
-        <div>
-            <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 0 10px #ccc' }}>
-                <label htmlFor="email" style={{ marginBottom: '10px' }}>Email:</label>
-                <input type="email" id="email" name="email" required style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} onChange={handleUsername} />
-                <label htmlFor="password" style={{ marginBottom: '10px' }}>Password:</label>
-                <input type="password" id="password" name="password" required style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px' }} onChange={handlePassword} />
-                <input type="submit" value="Login" style={{ padding: '10px 20px', border: 'none', borderRadius: '5px', backgroundColor: '#007bff', color: 'white', cursor: 'pointer' }} />
+        <div style={{ display: 'flex', justifyContent: 'center', padding: '20px' }}>
+            <form onSubmit={handleLogin} style={{ width: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 0 10px #ccc' }}>
+                <label htmlFor="email" style={{ marginBottom: '10px', textAlign: 'left', width: '100%' }}>Email:</label>
+                <input type="email" id="email" name="email" required style={{ marginBottom: '15px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px', width: '100%' }} onChange={handleUsername} />
+                <label htmlFor="password" style={{ marginBottom: '10px', textAlign: 'left', width: '100%' }}>Password:</label>
+                <input type="password" id="password" name="password" required style={{ marginBottom: '20px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px', width: '100%' }} onChange={handlePassword} />
+                <input type="submit" value="Login" style={{ padding: '10px', border: 'none', borderRadius: '5px', backgroundColor: '#007bff', color: 'white', cursor: 'pointer', width: '100%' }} />
             </form>
         </div>
     )
