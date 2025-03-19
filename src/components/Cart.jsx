@@ -1,14 +1,17 @@
 import React from "react";
 import useCartStore from "../store/cartStore";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const { cart, removeFromCart, clearCart, updateAmount } = useCartStore();
   console.log("Current cart:", cart);
 
+  const navigate=useNavigate();
+
   const containerStyle = {
     padding: "20px",
     maxWidth: "600px",
-    margin: "0 auto",
+    margin: "30px auto",
     border: "1px solid #ccc",
     borderRadius: "8px",
     boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
@@ -58,6 +61,15 @@ function Cart() {
     ...buttonStyle,
     backgroundColor: "#ff4500",
     marginTop: "10px",
+    marginRight: "10px"
+  };
+
+  const checkoutButtonStyle = {
+    ...buttonStyle,
+    backgroundColor: "#ADD8E6",
+    color: "#000000",
+    marginTop: "10px",
+    marginRight: "10px"
   };
 
   return (
@@ -117,9 +129,14 @@ function Cart() {
         <p>Cart is empty</p>
       )}
       {cart.length > 0 && (
-        <button style={clearButtonStyle} onClick={clearCart}>
-          Clear Cart
-        </button>
+        <>
+          <button style={clearButtonStyle} onClick={clearCart}>
+            Clear Cart
+          </button>
+          <button style={checkoutButtonStyle} onClick={() => navigate('/checkout')}>
+            Checkout
+          </button>
+        </>
       )}
     </div>
   );

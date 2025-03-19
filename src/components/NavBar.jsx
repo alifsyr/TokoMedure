@@ -23,9 +23,6 @@ function NavBar() {
                 <li className="navbar-item">
                     <Link to="/cart" className="navbar-link">Cart</Link>
                 </li>
-                <li className="navbar-item">
-                    <Link to="/checkout" className="navbar-link">Checkout</Link>
-                </li>
             </ul>
             <Link onClick={handleLogout} className="navbar-link logout-link">Logout</Link>
         </nav>

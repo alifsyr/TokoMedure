@@ -1,18 +1,18 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import useCartStore from "../store/cartStore";
+import NavBar from "../components/NavBar";
 
 function Checkout() {
     const {cart, clearCart} = useCartStore();
     console.log("Current cart:", cart);
 
-    const navigateToMarketplace= ()=> {
-        window.location.href = "/marketplace";
-    }
+    const navigate=useNavigate();
 
     const totalPrice = cart.reduce((total, item) => total + item.product.product.price, 0);
 
     return (
         <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+            <NavBar/>
             <h2 style={{ textAlign: "left", marginBottom: "20px" }}>Checkout</h2>
             {cart.length > 0 ? (
                 <div>
@@ -92,7 +92,7 @@ function Checkout() {
                             }}
                             onClick={() => {
                                 alert("Proceeding to checkout...");
-                                navigateToMarketplace();
+                                navigate("/marketplace");
                                 clearCart();
                             }}
                         >
